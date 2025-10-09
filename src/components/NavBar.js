@@ -9,9 +9,9 @@ function NavBar(){
   };
 
   return (
-    <div className="flex flex-row mb-16 justify-start min-w-full bg-black ">
-      <h1 className="text-white  font-bold text-4xl content-center align-middle pr-4 min-[980px]:border-white min-[980px]:border-b-2 min-[980px]:border-r-2 pb-8 pt-8 pl-2">Fitness</h1>
-    <nav className="justify-start w-full content-center pb-8 pt-8 pl-6 min-[980px]:border-white min-[980px]:border-b-2">
+    <div className="flex flex-row mb-16 justify-start min-w-full bg-indigo-900/50 ">
+      <h1 className="text-white  font-bold text-4xl content-center align-middle pr-8 pl-8 min-[980px]:border-blue-200 min-[980px]:border-b-4 min-[980px]:border-r-4  text-center">Fitness</h1>
+    <nav className="justify-start w-full content-center pb-8 pt-8 pl-6 min-[980px]:border-blue-200 min-[980px]:border-b-4">
       <ul className="hidden min-[980px]:flex justify-between w-full pr-32">
         <div className="flex space-x-8">
           <Link to="/">

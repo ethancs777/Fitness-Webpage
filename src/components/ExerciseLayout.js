@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 function ExerciseLayout({ name, image, description, actionButton, actionLink }) {
 
   return (
-    <div className="exercise-layout bg-black rounded-lg p-6 border border-gray-600 mb-8">
+    <div className="exercise-layout bg-black rounded-lg p-6 border-4 border-blue-00 mb-8">
       <div className="exercise-header mb-4">
         <h2 className="text-white text-2xl font-bold mb-4">{name}</h2>
           <div className="flex flex-col md:flex-row gap-6">

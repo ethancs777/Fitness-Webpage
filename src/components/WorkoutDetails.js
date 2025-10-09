@@ -13,7 +13,6 @@ import lungesImage from "../images/lunges.jpg";
 function WorkoutDetails() {
   const { category } = useParams();
 
-  // Sample data - you can expand this with more exercises and images
   const workoutData = {
     "upper-body": {
       name: "Upper Body Workouts",
@@ -96,7 +95,7 @@ function WorkoutDetails() {
     <div>
       <div className="flex justify-between items-center font-bold text-4xl mb-4 lg:ml-32 lg:mr-32 pl-4">
         <h1 className="text-white border-b-2 border-gray-600">{currentWorkout.name}</h1>
-        <Link to="/Workouts" className="text-white hover:text-gray-300 text-lg font-normal">
+        <Link to="/Workouts" className="text-white hover:text-gray-300 text-lg font-bold">
           ← Back to Categories
         </Link>
       </div>
