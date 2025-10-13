@@ -2,6 +2,8 @@ import ExerciseLayout from "./ExerciseLayout";
 import fullBodyImage from "../images/fullbody.jpeg";
 import lowerBodyImage from "../images/lowerbody.jpg";
 import upperBodyImage from "../images/upperbody.png";
+import cardioImage from "../images/cardio.jpg";
+import coreImage from "../images/core.webp";
 
 function Workouts(){
     const workoutCategories = [
@@ -25,13 +27,13 @@ function Workouts(){
         },
         {
             name: "Cardio Workouts",
-            image: fullBodyImage, // Temporary - you can add a specific cardio image later
+            image: cardioImage,
             description: "Boost your cardiovascular health and endurance with these heart-pumping exercises. Excellent for burning calories, improving heart health, and increasing stamina for daily activities. Estimated workout time: 20-40 minutes depending on intensity level.",
             category: "cardio"
         },
         {
             name: "Core Workouts",
-            image: upperBodyImage, // Temporary - you can add a specific core image later
+            image: coreImage,
             description: "Strengthen your core and improve stability with these targeted abdominal and back exercises. Essential for overall functional strength, posture, and injury prevention in daily life. Estimated workout time: 25-35 minutes including warm-up and cool-down.",
             category: "core"
         }
