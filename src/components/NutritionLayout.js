@@ -9,7 +9,7 @@ function NutritionLayout({ name, image, description, actionButton, actionLink })
       <div className="exercise-header mb-4">
         <h2 className="text-black text-2xl font-bold mb-4">{name}</h2>
           <div className="flex flex-col md:flex-row gap-6">
-            <img src={image} alt={name} className="w-full md:w-64 h-48 md:h-auto md:max-h-64 object-contain bg-gray-800 rounded-lg flex-shrink-0"/>
+            <img src={image} alt={name} className="w-full md:w-64 h-48 md:h-auto md:max-h-64 object-contain rounded-lg flex-shrink-0"/>
             <div className="exercise-description flex-1 md:pl-4 md:border-l-2 md:border-black flex flex-col"> 
                 <p className="text-black font-semibold mb-4 flex-grow">{description}</p>
                 {actionButton && actionLink && (

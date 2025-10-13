@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 function NavBar(){
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const isActive = (path) => {
+    if (path === '/') {
+      return location.pathname === '/';
+    }
+    return location.pathname.startsWith(path);
   };
 
   return (
@@ -15,64 +23,72 @@ function NavBar(){
       <ul className="hidden min-[980px]:flex justify-between w-full pr-32">
         <div className="flex space-x-8">
           <Link to="/">
-            <button className=" text-gray-100 font-semibold hover:text-emerald-400 hover:bg-gray-900 py-1 bg-gray-800 rounded-lg border border-gray-600 transition-all duration-300 transform hover:scale-105 shadow-lg min-w-[100px] px-4">Home</button>
+            <p className={`${isActive('/') ? 'text-emerald-400' : 'text-gray-100'} text-center font-semibold hover:text-emerald-400 transition-all duration-300 transform hover:scale-105 shadow-lg min-w-[100px] px-2`}>Home</p>
           </Link>
           <Link to="/Workouts">
-            <button className="text-gray-100 font-semibold hover:text-emerald-400 hover:bg-gray-900 py-1 bg-gray-800 rounded-lg border border-gray-600 transition-all duration-300 transform hover:scale-105 shadow-lg min-w-[100px] px-4">Workouts</button>
+            <p className={`${isActive('/Workouts') ? 'text-emerald-400' : 'text-gray-100'} text-center font-semibold hover:text-emerald-400 transition-all duration-300 transform hover:scale-105 shadow-lg min-w-[100px] px-2`}>Workouts</p>
           </Link>
           <Link to="/Nutrition">
-            <button className="text-gray-100 font-semibold hover:text-emerald-400 hover:bg-gray-900 py-1 bg-gray-800 rounded-lg border border-gray-600 transition-all duration-300 transform hover:scale-105 shadow-lg min-w-[100px] px-4">Nutrition</button>
+            <p className={`${isActive('/Nutrition') ? 'text-emerald-400' : 'text-gray-100'} text-center font-semibold hover:text-emerald-400 transition-all duration-300 transform hover:scale-105 shadow-lg min-w-[100px] px-2`}>Nutrition</p>
           </Link>
+          {/*  
           <Link to="/Progress">
-            <button className="text-gray-100 font-semibold hover:text-emerald-400 hover:bg-gray-900 py-1 bg-gray-800 rounded-lg border border-gray-600 transition-all duration-300 transform hover:scale-105 shadow-lg min-w-[100px] px-4">Progress</button>
+            <p className="text-gray-100 text-center font-semibold hover:text-emerald-400 transition-all duration-300 transform hover:scale-105 shadow-lg min-w-[100px] px-2">Progress</p>
           </Link>
+          */}
         </div>
+        {/*
         <Link to="/Contact">
-          <button className=" text-gray-100 font-semibold hover:text-emerald-400 hover:bg-gray-900 py-1 bg-gray-800 rounded-lg border border-gray-600 transition-all duration-300 transform hover:scale-105 shadow-lg min-w-[100px] px-4">Contact</button>
+          <p className="text-gray-100 text-center font-semibold hover:text-emerald-400 transition-all duration-300 transform hover:scale-105 shadow-lg min-w-[100px] px-2">Contact</p>
         </Link>
+        */}
       </ul>
     
 
       <div className="min-[980px]:hidden relative">
         <div className="flex justify-end pr-7">
-          <button onClick={toggleMenu} className="text-gray-100 hover:text-emerald-400 focus:outline-none transition-colors duration-300" aria-label="Toggle menu">
-            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              {isMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
-          </button>
-        </div>
-        <div className={`${isMenuOpen ? 'block' : 'hidden'} absolute top-full left-0 right-0 `}>
-          <ul className="flex flex-col space-y-1 items-end p-4 ">
-            <Link to="/" onClick={() => setIsMenuOpen(false)}>
-              <button className=" text-gray-100 text-sm font-semibold hover:text-emerald-400 hover:bg-gray-900 px-3  bg-gray-800 rounded-lg transition-all duration-300 shadow-lg min-w-[100px]">Home</button>
-            </Link>
-            <Link to="/Workouts" onClick={() => setIsMenuOpen(false)}>
-              <button className=" text-gray-100 text-sm font-semibold hover:text-emerald-400 hover:bg-gray-900 px-3 bg-gray-800 rounded-lg transition-all duration-300 shadow-lg min-w-[100px]">Workouts</button>
-            </Link>
-            <Link to="/Nutrition" onClick={() => setIsMenuOpen(false)}>
-              <button className=" text-gray-100 text-sm font-semibold hover:text-emerald-400 hover:bg-gray-900 px-3 bg-gray-800 rounded-lg transition-all duration-300 shadow-lg min-w-[100px]">Nutrition</button>
-            </Link>
-            <Link to="/Progress" onClick={() => setIsMenuOpen(false)}>
-              <button className=" text-gray-100 text-sm font-semibold hover:text-emerald-400 hover:bg-gray-900 px-3  bg-gray-800 rounded-lg transition-all duration-300 shadow-lg min-w-[100px]">Progress</button>
-            </Link>
-            <Link to="/Contact" onClick={() => setIsMenuOpen(false)}>
-              <button className=" text-gray-100 text-sm font-semibold hover:text-emerald-400 hover:bg-gray-900 px-3 bg-gray-800 rounded-lg transition-all duration-300 shadow-lg min-w-[100px]">Contact</button>
-            </Link>
-          </ul>
+          <div className="relative">
+            <button onClick={toggleMenu} className="text-gray-100 hover:text-emerald-400 focus:outline-none transition-colors duration-300" aria-label="Toggle menu">
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                {isMenuOpen ? (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                ) : (
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                )}
+              </svg>
+            </button>
+            <div className={`${isMenuOpen ? 'block' : 'hidden'} absolute top-full right-0 bg-gray-800 rounded-md shadow-lg mt-2`}>
+              <ul className="flex flex-col space-y-1 p-4">
+                <Link to="/" onClick={() => setIsMenuOpen(false)}>
+                  <p className={`${isActive('/') ? 'text-emerald-400 bg-gray-700' : 'text-gray-100'} text-sm font-semibold hover:text-emerald-400 hover:bg-gray-700 px-3 py-2 rounded transition-all duration-300 min-w-[100px] text-center`}>Home</p>
+                </Link>
+                <Link to="/Workouts" onClick={() => setIsMenuOpen(false)}>
+                  <p className={`${isActive('/Workouts') ? 'text-emerald-400 bg-gray-700' : 'text-gray-100'} text-sm font-semibold hover:text-emerald-400 hover:bg-gray-700 px-3 py-2 rounded transition-all duration-300 min-w-[100px] text-center`}>Workouts</p>
+                </Link>
+                <Link to="/Nutrition" onClick={() => setIsMenuOpen(false)}>
+                  <p className={`${isActive('/Nutrition') ? 'text-emerald-400 bg-gray-700' : 'text-gray-100'} text-sm font-semibold hover:text-emerald-400 hover:bg-gray-700 px-3 py-2 rounded transition-all duration-300 min-w-[100px] text-center`}>Nutrition</p>
+                </Link>
+                {/*
+                <Link to="/Progress" onClick={() => setIsMenuOpen(false)}>
+                  <p className="text-gray-100 text-sm font-semibold hover:text-emerald-400 hover:bg-gray-700 px-3 py-2 rounded transition-all duration-300 min-w-[100px] text-center">Progress</p>
+                </Link>
+                <Link to="/Contact" onClick={() => setIsMenuOpen(false)}>
+                  <p className="text-gray-100 text-sm font-semibold hover:text-emerald-400 hover:bg-gray-700 px-3 py-2 rounded transition-all duration-300 min-w-[100px] text-center">Contact</p>
+                </Link>
+                */}
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </nav>
